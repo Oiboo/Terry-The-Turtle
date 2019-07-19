@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Distructable.tscn" type="PackedScene" id=2]
 [ext_resource path="res://lvl_complete_teleport.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Dirt_autotile.tres" type="TileSet" id=4]
+[ext_resource path="res://Energy.tscn" type="PackedScene" id=5]
 
 [node name="World" type="Node"]
 
@@ -57,6 +58,29 @@ align = 1
 valign = 1
 uppercase = true
 
+[node name="Label4" type="Label" parent="."]
+margin_left = 448.0
+margin_top = 864.0
+margin_right = 812.0
+margin_bottom = 1056.0
+text = "Shooting uses your energy"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+
+[node name="Label5" type="Label" parent="."]
+margin_left = 832.0
+margin_top = 704.0
+margin_right = 1088.0
+margin_bottom = 832.0
+text = " so make sure you eat!
+"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+
 [node name="Label" type="Label" parent="."]
 margin_right = 576.0
 margin_bottom = 192.0
@@ -64,3 +88,6 @@ text = "MOVE WITH ARROW KEYS"
 align = 1
 valign = 1
 uppercase = true
+
+[node name="Energy" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1120, 672 )

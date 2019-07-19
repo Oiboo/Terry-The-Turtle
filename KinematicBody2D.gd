@@ -46,17 +46,21 @@ func animate_player(velocity):
 func _physics_process(delta):
 	velocity = get_input()
 	if Input.is_action_pressed("player_shoot"):
-		if gun_timer.get_time_left() == 0:
-	
-			shoot()
+		if get_node("/root/main").magic!=0:
+			if gun_timer.get_time_left() == 0:
+				get_node("/root/main").magic-=1
+				shoot()
 	if Input.is_action_just_pressed("player_dash"):
-		pass
-
+		gun_timer.start()
+		Force=2
+	
 	
 	
 	animate_player(velocity)
 	velocity = move_and_slide(velocity  * Speed * Force)
 
+	
+	
 func shoot():
 	gun_timer.start()
 	var b = bullet.instance()
@@ -77,3 +81,7 @@ func _on_Enemy_Ai_damage():
 	else:
 		get_node("/root/main").health-=1
 
+
+
+func _on_Gun_timer_timeout():
+	Force = 1

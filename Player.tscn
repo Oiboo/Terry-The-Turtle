@@ -43,3 +43,4 @@ motion_mirroring = Vector2( 256, 192 )
 [node name="Sky" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 texture = ExtResource( 4 )
 centered = false
+[connection signal="timeout" from="Gun_timer" to="." method="_on_Gun_timer_timeout"]
