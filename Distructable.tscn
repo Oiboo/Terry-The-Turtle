@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends StaticBody2D
+
+var health = 3
+
+
+func _ready():
+	add_to_group(\"blocker\")
+	
+func damage():
+	health -=1
+	#print(health)
+	if health==2:
+		get_node(\"Sprite\").modulate = Color(1,1,0)
+		
+	else:
+		get_node(\"Sprite\").modulate = Color(1,0,0)
+func explode():
+	queue_free()
+
+"
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32, 32 )
+
+[node name="Distructable gem" type="StaticBody2D"]
+script = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0, 1, 0, 1 )
+texture = ExtResource( 1 )

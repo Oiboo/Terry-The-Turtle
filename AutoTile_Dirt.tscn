@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Dirt Autotile and Sky/DirtAutoTile.png" type="Texture" id=1]
+
+[node name="AutoTile_Dirt" type="Node"]
+
+[node name="DirtAutoTile" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+centered = false

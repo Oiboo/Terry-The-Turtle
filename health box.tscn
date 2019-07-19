@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://health box.gd" type="Script" id=1]
+[ext_resource path="res://assets/health_box.png" type="Texture" id=2]
+[ext_resource path="res://assets/coin.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 64, 96 )
+
+[node name="Health_box" type="Area2D"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Need" type="Label" parent="."]
+margin_left = -20.0
+margin_top = -41.0
+margin_bottom = -27.0
+text = "5"
+align = 1
+valign = 1
+
+[node name="coins" type="TextureRect" parent="Need"]
+margin_left = 20.0
+margin_right = 36.0
+margin_bottom = 16.0
+texture = ExtResource( 3 )
+[connection signal="body_entered" from="." to="." method="_on_Health_box_body_entered"]
