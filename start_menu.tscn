@@ -13,9 +13,9 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 margin_left = 454.0
-margin_top = 269.0
+margin_top = 257.0
 margin_right = 569.0
-margin_bottom = 331.0
+margin_bottom = 343.0
 
 [node name="Title" type="Label" parent="CenterContainer/VBoxContainer"]
 margin_right = 115.0
@@ -26,12 +26,20 @@ text = "TERRY THE TURTLE"
 margin_top = 18.0
 margin_right = 115.0
 margin_bottom = 38.0
-text = "Start Game"
+text = "New Game"
 
-[node name="Quit Game" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="Load Game" type="Button" parent="CenterContainer/VBoxContainer"]
 margin_top = 42.0
 margin_right = 115.0
 margin_bottom = 62.0
+text = "Load Game"
+
+[node name="Quit Game" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 66.0
+margin_right = 115.0
+margin_bottom = 86.0
 text = "Quit Game"
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Start Game" to="." method="_on_Start_Game_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Load Game" to="." method="_on_Load_Game_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Load Game" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Quit Game" to="." method="_on_Quit_Game_pressed"]

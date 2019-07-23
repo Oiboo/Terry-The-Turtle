@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Enemy_eel.gd" type="Script" id=1]
+[ext_resource path="res://assets/elec.png" type="Texture" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 118.574, -224.482, -118.574, 224.482, 107.26, 174.094, -127.685, -36.8322, 127.685, 36.8322, 263.183, 487.167, -209.158, -16.5665, 209.158, 16.5665, 799.704, 46.409, 245.548, -263.964, -245.548, 263.964, 864.775, 461.385, 348.09, -286.62, -348.09, 286.62, 107.26, 174.094 )
+}
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 34.2901, 36.9178 )
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 148.066
+
+[node name="Enemy_eel" type="Path2D"]
+position = Vector2( 10.0158, -28.4319 )
+curve = SubResource( 1 )
+script = ExtResource( 1 )
+
+[node name="follow" type="PathFollow2D" parent="."]
+position = Vector2( 107.26, 174.094 )
+rotation = 2.05346
+
+[node name="elec" type="Sprite" parent="follow"]
+position = Vector2( 0.942543, 1.73991 )
+rotation = 3.85587e-008
+scale = Vector2( 1.54582, 1.57496 )
+texture = ExtResource( 2 )
+
+[node name="body" type="Area2D" parent="follow"]
+editor/display_folded = true
+
+[node name="main_col" type="CollisionShape2D" parent="follow/body"]
+position = Vector2( 2.03256, -0.201385 )
+rotation = -1.54811
+shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="follow"]
+rotation = 1.5708
+texture = ExtResource( 3 )
+
+[node name="electric" type="Area2D" parent="follow"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="follow/electric"]
+shape = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+[connection signal="body_entered" from="follow/body" to="." method="_on_body_body_entered"]
+[connection signal="body_entered" from="follow/electric" to="." method="_on_electric_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

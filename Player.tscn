@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://KinematicBody2D.gd" type="Script" id=1]
+[ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://Bullet.tscn" type="PackedScene" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://assets/far.png" type="Texture" id=4]
@@ -15,8 +15,12 @@ bullet = ExtResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+limit_left = -100
+limit_top = -200
+limit_right = 3000
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
+editor_draw_limits = true
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 3 )

@@ -8,6 +8,8 @@ onready var gun_timer = get_node("Gun_timer")
 var velocity
 
 var Force = 1
+var active = false
+
 
 func _ready():
 	add_to_group("player")
@@ -52,7 +54,7 @@ func _physics_process(delta):
 				shoot()
 	if Input.is_action_just_pressed("player_dash"):
 		gun_timer.start()
-		Force=2
+		Force=main.dash_force
 	
 	
 	
@@ -63,6 +65,7 @@ func _physics_process(delta):
 	
 func shoot():
 	gun_timer.start()
+	active=true
 	var b = bullet.instance()
 	bullet_container.add_child(b)
 	b.start_at(get_rotation(),get_node("muzzle").get_global_position())
@@ -72,11 +75,9 @@ func shoot():
 
 	
 
-func _on_Enemy_Ai_damage():
-	if get_node("/root/main").health <=0:
-		queue_free()
-		get_node("/root/main").health=3
-		get_tree().reload_current_scene()
+func damage():
+	if get_node("/root/main").health <=1:
+		Save.load_game()
 		
 	else:
 		get_node("/root/main").health-=1
@@ -85,3 +86,4 @@ func _on_Enemy_Ai_damage():
 
 func _on_Gun_timer_timeout():
 	Force = 1
+	active=false

@@ -28,10 +28,16 @@ func _on_Bullet_body_entered(body):
 		if body.health <= 0:
 			body.explode()
 		
+	if body.get_groups().has("upgrade"):
+		queue_free()
+		body.do_upgrades()
 	if body.get_groups().has("switch"):
 		queue_free()
 		body.switch()
 	if body.get_groups().has("enemy"):
 		queue_free()
 		body.freeze()
+	if body.get_groups().has("Pswitch"):
+		queue_free()
+		body.take_coin()
 	
